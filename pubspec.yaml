@@ -20,6 +20,7 @@ dependencies:
   dio: ^4.0.4
   flutter_image_slideshow: ^0.1.2
   fancy_shimmer_image: ^2.0.1+1
+  flutter_bullet_list: ^0.0.4
 
 dev_dependencies:
   flutter_test:
@@ -28,5 +29,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/
 
 

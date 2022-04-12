@@ -18,30 +18,32 @@ class PostCardComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        PostImageComponent(postImages: _post.images),
-        Expanded(
-          child: Container(
-            color: kWhiteColor,
-            margin: const EdgeInsets.symmetric(
-              horizontal: 16.0,
-              vertical: 8.0,
+    return SafeArea(
+      child: Column(
+        children: [
+          PostImageComponent(postImages: _post.images),
+          Expanded(
+            child: Container(
+              color: kWhiteColor,
+              margin: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 8.0,
+              ),
+              width: double.infinity,
+              child: Column(
+                children: [
+                  PostTitleComponent(postTitle: _post.title),
+                  PostDescriptionComponent(description: _post.description),
+                  PostCardFooter(
+                    postedOn: _post.postedOn,
+                  ),
+                ],
+              ),
             ),
-            width: double.infinity,
-            child: Column(
-              children: [
-                PostTitleComponent(postTitle: _post.title),
-                PostDescriptionComponent(description: _post.description),
-                PostCardFooter(
-                  postedOn: _post.postedOn,
-                ),
-              ],
-            ),
+            flex: 5,
           ),
-          flex: 5,
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

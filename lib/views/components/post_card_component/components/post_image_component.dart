@@ -10,14 +10,13 @@ class PostImageComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return AspectRatio(
+      aspectRatio: 3/2,
       child: postImages.isEmpty
           ? Container(
-              width: double.infinity,
               color: kPrimaryColor,
             )
           : Container(
-              width: double.infinity,
               color: kPrimaryColor,
               child: ImageSlideshow(
                 children: postImages
@@ -33,7 +32,6 @@ class PostImageComponent extends StatelessWidget {
                 indicatorBackgroundColor: kPrimaryColor,
               ),
             ),
-      flex: 3,
     );
   }
 }

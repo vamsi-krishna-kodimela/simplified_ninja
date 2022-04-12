@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Post {
   final String id;
   final String title;
-  final String description;
+  final List<String> description;
   final List<String> images;
   final DateTime postedOn;
   final List<String> likes;
@@ -21,9 +21,11 @@ class Post {
 
   Post.fromMap(this.id, Map<String, dynamic> data)
       : title = data["title"] ?? "",
-        description = data["description"] ?? "Date not available",
-        images = List<String>.from(data["images"] ?? []),
-        postedOn = (data["postedOn"] as Timestamp).toDate(),
+        description = List<String>.from(data["points"] ?? []),
+        images = List<String>.from((data["images"] ?? [])
+            .map((e) => e.runtimeType == String ? e : e["text"])
+            .toList()),
+        postedOn = DateTime.now(),
         likes = List<String>.from(data["likes"] ?? []),
         keywords = List<String>.from(data["keywords"] ?? []);
 }
